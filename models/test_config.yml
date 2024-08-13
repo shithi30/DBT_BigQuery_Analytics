@@ -24,7 +24,7 @@ models:
               values: ["chaldal.com"]
 
   - name: proc_simweb_daraz
-    description: model holo proc_simweb_daraz
+    description: "{{ doc('StatusCD') }}"
     columns:
       - name: platform
         description: col holo platform
