@@ -1,0 +1,34 @@
+models:
+  - name: land_simweb
+    description: model holo land_simweb
+    columns:
+      - name: platform
+        description: col holo platform
+        tests:
+          - string_not_empty
+          - not_null
+
+      - name: category
+        description: col holo cat
+        tests:
+          - not_null
+
+  - name: proc_simweb_chaldal
+    description: model holo proc_simweb_chaldal
+    columns:
+      - name: platform
+        description: col holo platform
+        tests:
+          - string_not_empty
+          - accepted_values:
+              values: ["chaldal.com"]
+
+  - name: proc_simweb_daraz
+    description: "{{ doc('StatusCD') }}"
+    columns:
+      - name: platform
+        description: col holo platform
+        tests:
+          - relationships:
+              field: platform
+              to: ref('land_simweb')
