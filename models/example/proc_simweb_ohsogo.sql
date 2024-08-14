@@ -1,0 +1,1 @@
+{{ generate_plt_data('ohsogo.com') }}

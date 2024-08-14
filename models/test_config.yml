@@ -32,3 +32,8 @@ models:
           - relationships:
               field: platform
               to: ref('land_simweb')
+
+  - name: land_simtbl_uniq
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: ref('seed_platforms')
