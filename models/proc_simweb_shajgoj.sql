@@ -1,1 +1,0 @@
-{{ generate_plt_data('shajgoj.com') }}
