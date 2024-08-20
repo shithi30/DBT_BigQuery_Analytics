@@ -1,4 +1,4 @@
-{% docs obj %}
+{% docs objective %}
 The Google/GCP BigQuery workspace (dataset) for flyer analytics
 
  Sl | Task                           | Details                                                     
