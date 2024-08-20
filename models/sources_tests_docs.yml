@@ -7,8 +7,8 @@ sources:
     tables:
       - name: landing_tbl
         freshness:
-          warn_after: {count: 1, period: hour}
-          error_after: {count: 48, period: hour}
+          warn_after: {count: 25, period: hour}
+          error_after: {count: 72, period: hour}
         description: "{{ doc('landing_tbl_desc') }}"
         identifier: landing_grocery_flyer_items
         columns:
