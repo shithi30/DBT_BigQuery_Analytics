@@ -3,7 +3,7 @@
 
 select *
 from 
-    (select *, current_timestamp() model_report_time
+    (select *, {{ windsor_time('current_timestamp()') }} model_report_time
     from {{ ref('fleeting_grocery_flyer_items') }}
     where lower(flyer_item) like '%chips%'
     ) tbl1
