@@ -1,6 +1,6 @@
 Welcome to my DBT Developer workspace! Find my DBT transforms (on top of GCP BigQuery) here.
 
-### DBT Resources:
+### DBT Resources
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
 - Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
 - Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
