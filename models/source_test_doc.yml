@@ -1,6 +1,5 @@
 sources:
   - name: workspace
-    description: The Google/GCP BigQuery workspace (dataset) for flyer analytics
     dataset: dbt_smaitra
     # freshness:
     #   warn_after: {count: 1, period: hour}
@@ -8,14 +7,12 @@ sources:
     # loaded_at_field: Updated_at
     tables:
       - name: landing_tbl
-        description: The main (landing) table, ETL-ed to BigQuery after scraping
         identifier: landing_grocery_flyer_items
         columns:
           - name: id
             tests:
               - unique
           - name: flyer_item
-            description: The principle data point to mine other attributes from
             tests:
               - not_null
               - string_not_empty
@@ -30,23 +27,19 @@ sources:
                   to: ref('seed_flyer_grocers')
                   field: platform
       - name: processing_tbl
-        description: The processed table, with refined timestamps and downstream dependencies
         identifier: processing_grocery_flyer_items
       - name: serving_tbl
-        description: The output (household) table of interest
         identifier: serving_grocery_flyer_items
       - name: incremental_tbl
-        description: Table to preserve historical chips entries in flyers :) 
         identifier: incremental_chips_flyer_items
       - name: history_tbl
-        description: The statistics table, preservinging historical changes in flyers over time
         identifier: historical_grocery_flyer_summary
       - name: seed_tbl
-        description: Table to source platforms
         identifier: seed_flyer_grocers
       
 models:
   - name: processing_grocery_flyer_items
+    description: The processed table, with refined timestamps and downstream dependencies
     tests:
       - dbt_expectations.expect_table_row_count_to_equal_other_table:
           compare_model: ref('fleeting_grocery_flyer_items')
