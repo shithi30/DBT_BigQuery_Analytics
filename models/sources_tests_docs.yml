@@ -2,15 +2,14 @@ version: 2
 
 sources:
   - name: workspace
-    description: The Google/GCP BigQuery workspace (dataset) for flyer analytics
+    description: doc('obj')
     dataset: dbt_smaitra
     tables:
       - name: landing_tbl
         freshness:
           warn_after: {count: 1, period: hour}
           error_after: {count: 48, period: hour}
-        # loaded_at_field: report_time
-        description: The main (landing) table, ETL-ed to BigQuery after scraping
+        description: doc('landing_tbl_desc')
         identifier: landing_grocery_flyer_items
         columns:
           - name: id
@@ -27,7 +26,7 @@ sources:
           - name: platform
             data_tests:
               - accepted_values:
-                  values: ["Loblaws", "RealCanadian", "Foodland", "NoFrills", "Zehrs", "Safeway", "ThriftyFoods", "Sobeys", "Freshco", "IGA"]
+                  values: ['Loblaws', 'RealCanadian', 'Foodland', 'NoFrills', 'Zehrs', 'Safeway', 'ThriftyFoods', 'Sobeys', 'Freshco', 'IGA']
               - relationships:
                   to: ref('seed_flyer_grocers')
                   field: platform
@@ -47,7 +46,7 @@ models:
 
 snapshots:              
   - name: historical_grocery_flyer_summary
-    description: The statistics table, preservinging historical changes in flyers over time
+    description: The statistics table, preserving historical changes in flyers over time
 
 seeds:              
   - name: seed_flyer_grocers
