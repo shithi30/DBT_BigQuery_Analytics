@@ -2,14 +2,14 @@ version: 2
 
 sources:
   - name: workspace
-    description: doc('obj')
+    description: "{{ doc('objective') }}"
     dataset: dbt_smaitra
     tables:
       - name: landing_tbl
         freshness:
           warn_after: {count: 1, period: hour}
           error_after: {count: 48, period: hour}
-        description: doc('landing_tbl_desc')
+        description: "{{ doc('landing_tbl_desc') }}"
         identifier: landing_grocery_flyer_items
         columns:
           - name: id
