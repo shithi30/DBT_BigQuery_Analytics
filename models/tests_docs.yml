@@ -27,6 +27,7 @@ sources:
               - relationships:
                   to: ref('seed_flyer_grocers')
                   field: platform
+    models:              
       - name: processing_tbl
         freshness:
           warn_after: {count: 1, period: hour}
@@ -45,12 +46,10 @@ sources:
       - name: seed_tbl
         description: Table to source platforms
         identifier: seed_flyer_grocers
-
-models:
-  - name: processing_grocery_flyer_items
-    description: The processed table, with refined timestamps and downstream dependencies
-    tests:
-      - dbt_expectations.expect_table_row_count_to_equal_other_table:
-          compare_model: ref('fleeting_grocery_flyer_items')
-      - dbt_expectations.expect_table_row_count_to_equal_other_table:
-          compare_model: source('workspace', 'landing_tbl')
+      - name: processing_grocery_flyer_items
+        description: The processed table, with refined timestamps and downstream dependencies
+        tests:
+          - dbt_expectations.expect_table_row_count_to_equal_other_table:
+              compare_model: ref('fleeting_grocery_flyer_items')
+          - dbt_expectations.expect_table_row_count_to_equal_other_table:
+              compare_model: source('workspace', 'landing_tbl')
