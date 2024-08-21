@@ -3,7 +3,7 @@
 
 select *
 from 
-    (select *, {{ windsor_time('current_timestamp()') }} model_report_time
+    (select *, current_timestamp() model_report_time
     from
     ({{ dbt_utils.deduplicate(
         relation = ref('fleeting_grocery_flyer_items'),
