@@ -4,7 +4,12 @@
 select *
 from 
     (select *, {{ windsor_time('current_timestamp()') }} model_report_time
-    from {{ ref('fleeting_grocery_flyer_items') }}
+    from
+    ({{ dbt_utils.deduplicate(
+        relation = ref('fleeting_grocery_flyer_items'),
+        partition_by = 'flyer_item',
+        order_by = 'platform'
+    ) }}) tbl1
     where lower(flyer_item) like '%chips%'
     ) tbl1
 
